@@ -11,7 +11,7 @@ export default function Vendors(){
   useEffect(()=> { fetchVendors(); }, []);
 
   const fetchVendors = () => {
-    axios.get('http://localhost:7000/api/getVendors')
+    axios.get('https://exp9-backend-2553.onrender.com/api/getVendors')
       .then(res => setVendors(res.data))
       .catch(err => console.error(err));
   };
@@ -19,7 +19,7 @@ export default function Vendors(){
   const addVendor = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:7000/api/addVendor', form, { headers: { Authorization: `Bearer ${token}` } });
+      const res = await axios.post('https://exp9-backend-2553.onrender.com/api/addVendor', form, { headers: { Authorization: `Bearer ${token}` } });
       setMessage(res.data.status);
       setForm({ vendorName: '', shopName: '', category: '', contact: '', rating: '' });
       fetchVendors();
@@ -30,7 +30,7 @@ export default function Vendors(){
 
   const deleteVendor = async (id) => {
     try {
-      await axios.post('http://localhost:7000/api/deleteVendor', { id }, { headers: { Authorization: `Bearer ${token}` } });
+      await axios.post('https://exp9-backend-2553.onrender.com/api/deleteVendor', { id }, { headers: { Authorization: `Bearer ${token}` } });
       fetchVendors();
     } catch (err) { console.error(err); }
   };

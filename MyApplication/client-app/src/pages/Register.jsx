@@ -20,7 +20,7 @@ export default function Register(){
     if (form.password !== form.confirmPassword) { setError('Passwords do not match'); return; }
 
     try {
-      const res = await axios.post('http://localhost:7000/api/auth/register', form);
+      const res = await axios.post('https://exp9-backend-2553.onrender.com/api/auth/register', form);
       localStorage.setItem('token', res.data.token);
       navigate('/dashboard');
     } catch (err) {

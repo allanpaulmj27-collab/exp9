@@ -15,13 +15,13 @@ export default function Products(){
   }, []);
 
   const fetchProducts = () => {
-    axios.get('http://localhost:7000/api/getProducts')
+    axios.get('https://exp9-backend-2553.onrender.com/api/getProducts')
       .then(res => setProducts(res.data))
       .catch(err => console.error(err));
   };
 
   const fetchVendors = () => {
-    axios.get('http://localhost:7000/api/getVendors')
+    axios.get('https://exp9-backend-2553.onrender.com/api/getVendors')
       .then(res => setVendors(res.data))
       .catch(err => console.error(err));
   };
@@ -29,7 +29,7 @@ export default function Products(){
   const addProduct = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:7000/api/addProduct', form, { headers: { Authorization: `Bearer ${token}` } });
+      const res = await axios.post('https://exp9-backend-2553.onrender.com/api/addProduct', form, { headers: { Authorization: `Bearer ${token}` } });
       setMessage(res.data.status);
       setForm({ productName: '', description: '', price: '', category: '', vendorId: '', available: true });
       fetchProducts();
@@ -40,7 +40,7 @@ export default function Products(){
 
   const deleteProduct = async (id) => {
     try {
-      await axios.post('http://localhost:7000/api/deleteProduct', { id }, { headers: { Authorization: `Bearer ${token}` } });
+      await axios.post('https://exp9-backend-2553.onrender.com/api/deleteProduct', { id }, { headers: { Authorization: `Bearer ${token}` } });
       fetchProducts();
     } catch (err) { console.error(err); }
   };

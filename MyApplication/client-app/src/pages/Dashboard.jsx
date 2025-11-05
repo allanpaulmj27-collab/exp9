@@ -9,7 +9,7 @@ export default function Dashboard(){
 
   useEffect(() => {
     if (!token) { navigate('/login'); return; }
-    axios.get('http://localhost:7000/api/auth/me', { headers: { Authorization: `Bearer ${token}` } })
+    axios.get('https://exp9-backend-2553.onrender.com/api/auth/me', { headers: { Authorization: `Bearer ${token}` } })
       .then(res => setUser(res.data.user))
       .catch(() => { localStorage.removeItem('token'); navigate('/login'); });
   }, [token, navigate]);
